@@ -6,24 +6,23 @@
 
 using namespace std;
 
-#define MAX_ObjectNum 26
-#define MAX_TransNum 256
+#define MAX_ObjectNum 26	//最大对象数
+#define MAX_TransNum 256	//最大事务数
 
 enum lock {
-	slock,
-	ulock,
+	slock,	
+	ulock,	//u锁未使用
 	xlock,
 };
 
-
 typedef struct object {
-	char objectID;
-	char lock[MAX_TransNum];
-	queue<int> q;
+//	char objectID;
+	int lock[MAX_TransNum];	//lock[i]表示事务i的锁类型
+	queue<int> q;	//等待object加锁的事务队列
 };
 
-int trans[MAX_TransNum];
-object ob[MAX_ObjectNum];
+int trans[MAX_TransNum];	//trans[i] == 1代表事务i运行
+object ob[MAX_ObjectNum];	//ob[i]表示A数据库对象
 
 void startTransID(int transactionID) {
 	trans[transactionID] = 1;
@@ -166,20 +165,20 @@ void endTransID(int transactionID) {
 	trans[transactionID] = 0;
 	printf("Transaction %d ended\n",transactionID);
 	for (int i = 0;i < MAX_ObjectNum;i++) {
-		int newqsize, qsize;
-		newqsize = qsize = ob[i].q.size();
+		int newqsize = 0, qsize;
+		qsize = ob[i].q.size();
 		int temp[MAX_TransNum];
 		for (int j = 0;j < qsize;j += 2) {
 			if (ob[i].q.front() == transactionID) {
 				ob[i].q.pop();
 				ob[i].q.pop();
-				newqsize -= 2;
 			}
 			else {
-				temp[j] = ob[i].q.front();
+				temp[newqsize] = ob[i].q.front();
 				ob[i].q.pop();
-				temp[j + 1] = ob[i].q.front();
+				temp[newqsize + 1] = ob[i].q.front();
 				ob[i].q.pop();
+				newqsize += 2;
 			}
 		}
 		for (int j = 0;j < newqsize;j += 2) {
