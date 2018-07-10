@@ -16,7 +16,7 @@
 事务获得锁的规则，例如 FIFO、LIFO 等，但需要在实验报告中明确解释你的规则。 <br>
  
 每种输入命令有相应的输出信息。下表给出了每一种输入命令可能的输出信息： <br>
- 
+<pre> 
 输入命令 	可能的输出 
 Start 	Transaction started <br>
 SLock 	Lock granted <br>
@@ -30,9 +30,9 @@ Lock released <br>
 Lock granted to <transID> . . . <transID> <br>
 Unlock 	Lock released <br>
 Lock granted to <transID> . . . <transID> <br>
- 
+</pre> 
 下面是输入输出信息的一个示例： <br>
- 
+<pre>  
 输入 	              输出 <br>
 Start 100 	  Start 100 : Transaction 100 started <br>
 Start 200 	  Start 200 : Transaction 200 started <br>
@@ -47,7 +47,7 @@ End 100 	    End 100: Transaction 100 ended <br>
               X-Lock on B granted to 200 <br>
 Unlock 200 A 	Unlock 200 A: Lock released <br>
 End 200 	    End 200: Transaction 200 ended <br>
- 
+</pre>  
 说明： 
  1.	编程语言首选使用 C/C++； <br>
  2.	输入输出可以直接使用标准输入输出，但也允许使用窗体。 <br>
