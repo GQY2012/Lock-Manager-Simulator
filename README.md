@@ -32,10 +32,10 @@ Unlock 	   Lock released
            Lock granted to <transID> . . . <transID> 
 </pre> 
 下面是输入输出信息的一个示例： 
-<p>  
+<p align="left"> 
 输入 	        输出 
-Start 100 	   Start 100 : Transaction 100 started  
-Start 200 	   Start 200 : Transaction 200 started  
+Start 100 	   Start 100 : Transaction 100 started  <br>
+Start 200 	   Start 200 : Transaction 200 started  <br>
 SLock 100 A 	 SLock 100 A: Lock granted  
 XLock 200 A 	 XLock 200 A: Waiting for lock (S-lock held by: 100)  
 Unlock 100 A  Unlock 100 A: Lock released X-Lock  
