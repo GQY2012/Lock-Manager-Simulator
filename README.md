@@ -17,36 +17,37 @@
  
 每种输入命令有相应的输出信息。下表给出了每一种输入命令可能的输出信息： <br>
 <pre> 
-输入命令 	可能的输出 
-Start 	Transaction started <br>
-SLock 	Lock granted <br>
-Waiting for lock (X-lock held by: <trans_ID>) <br>
-XLock 	Lock granted <br>
-Upgrade to X-lock granted <br>
-Waiting for lock (S-lock held by: <transID> . . . <transID>)  <br>
-Waiting for lock (X-lock held by: <trans_ID>) <br>
-End 	Transaction ended <br>
-Lock released <br>
-Lock granted to <transID> . . . <transID> <br>
-Unlock 	Lock released <br>
-Lock granted to <transID> . . . <transID> <br>
+输入命令 	 可能的输出 
+Start 	    Transaction started 
+SLock 	    Lock granted 
+           Waiting for lock (X-lock held by: <trans_ID>) 
+XLock 	    Lock granted 
+           Upgrade to X-lock granted 
+           Waiting for lock (S-lock held by: <transID> . . . <transID>)  
+           Waiting for lock (X-lock held by: <trans_ID>) 
+End 	      Transaction ended
+           Lock released 
+           Lock granted to <transID> . . . <transID> 
+Unlock 	   Lock released 
+           Lock granted to <transID> . . . <transID> 
 </pre> 
-下面是输入输出信息的一个示例： <br>
+下面是输入输出信息的一个示例： 
 <pre>  
-输入 	              输出 <br>
-Start 100 	  Start 100 : Transaction 100 started <br>
-Start 200 	  Start 200 : Transaction 200 started <br>
-SLock 100 A 	SLock 100 A: Lock granted <br>
-XLock 200 A 	XLock 200 A: Waiting for lock (S-lock held by: 100) <br>
-Unlock 100 A 	Unlock 100 A: Lock released X-Lock granted to 200 <br>
-XLock 100 B 	XLock 100 B: Lock granted <br>
-XLock 200 B 	XLock 200 B: Waiting for lock (X-lock held by: 100) <br>
-XLock 100 A 	XLock 100 A: Waiting for lock (X-lock held by: 200) <br>
-End 100 	    End 100: Transaction 100 ended <br>
-              Release X-lock on B <br>
-              X-Lock on B granted to 200 <br>
-Unlock 200 A 	Unlock 200 A: Lock released <br>
-End 200 	    End 200: Transaction 200 ended <br>
+输入 	        输出 
+Start 100 	   Start 100 : Transaction 100 started 
+Start 200 	   Start 200 : Transaction 200 started 
+SLock 100 A 	 SLock 100 A: Lock granted 
+XLock 200 A 	 XLock 200 A: Waiting for lock (S-lock held by: 100) 
+Unlock 100 A  Unlock 100 A: Lock released X-Lock 
+              granted to 200 
+XLock 100 B 	 XLock 100 B: Lock granted 
+XLock 200 B 	 XLock 200 B: Waiting for lock (X-lock held by: 100) 
+XLock 100 A 	 XLock 100 A: Waiting for lock (X-lock held by: 200) 
+End 100 	     End 100: Transaction 100 ended 
+              Release X-lock on B 
+              X-Lock on B granted to 200 
+Unlock 200 A  Unlock 200 A: Lock released 
+End 200 	     End 200: Transaction 200 ended 
 </pre>  
 说明： 
  1.	编程语言首选使用 C/C++； <br>
@@ -54,5 +55,5 @@ End 200 	    End 200: Transaction 200 ended <br>
  3.	除了要求的输入命令外，其它命令可以自行增加，例如打印整个锁表、输出特定数据对象上当前持有锁的事务列表、输出特定对象上等待锁的事务列表等等。 
  <br>
 提交要求： <br>
-1.	完成锁管理器模拟程序设计与实现，并能够演示； <br>
-2.	提交设计报告，格式和要求参考报告模板。 <br>
+ 1.	完成锁管理器模拟程序设计与实现，并能够演示； <br>
+ 2.	提交设计报告，格式和要求参考报告模板。 <br>
