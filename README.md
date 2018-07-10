@@ -31,15 +31,14 @@ End 	      Transaction ended
 Unlock 	   Lock released 
            Lock granted to <transID> . . . <transID> 
 </pre> 
-下面是输入输出信息的一个示例： 
-<p align="left"> 
-输入 	        输出 
-Start 100 	   Start 100 : Transaction 100 started  <br>
-Start 200 	   Start 200 : Transaction 200 started  <br>
-SLock 100 A 	 SLock 100 A: Lock granted  
-XLock 200 A 	 XLock 200 A: Waiting for lock (S-lock held by: 100)  
-Unlock 100 A  Unlock 100 A: Lock released X-Lock  
-              granted to 200  
+下面是输入输出信息的一个示例：  
+输入|输出 
+Start 100 | Start 100 : Transaction 100 started  <br>
+Start 200 |	   Start 200 : Transaction 200 started  <br>
+SLock 100 A |	 SLock 100 A: Lock granted  
+XLock 200 A |	 XLock 200 A: Waiting for lock (S-lock held by: 100)  
+Unlock 100 A | Unlock 100 A: Lock released X-Lock  
+             | granted to 200  
 XLock 100 B 	 XLock 100 B: Lock granted  
 XLock 200 B 	 XLock 200 B: Waiting for lock (X-lock held by: 100)  
 XLock 100 A 	 XLock 100 A: Waiting for lock (X-lock held by: 200)  
@@ -47,8 +46,7 @@ End 100 	     End 100: Transaction 100 ended
               Release X-lock on B  
               X-Lock on B granted to 200  
 Unlock 200 A  Unlock 200 A: Lock released  
-End 200 	     End 200: Transaction 200 ended  
-</p>  
+End 200 	     End 200: Transaction 200 ended   
 说明： 
  1.	编程语言首选使用 C/C++； <br>
  2.	输入输出可以直接使用标准输入输出，但也允许使用窗体。 <br>
